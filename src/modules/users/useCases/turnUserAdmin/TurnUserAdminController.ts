@@ -10,6 +10,9 @@ class TurnUserAdminController {
 
     const superUser = this.turnUserAdminUseCase.execute({ user_id });
 
+    if (!superUser)
+      return response.status(404).json({ error: "User not fund" });
+
     return response.status(200).json(superUser);
   }
 }
